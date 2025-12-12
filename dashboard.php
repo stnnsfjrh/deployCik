@@ -36,7 +36,7 @@ $input = [
 ];
 
 // Panggil API ML
-$ml_api_url = getenv('ML_API_URL');
+$ml_api_url = getenv('https://api-insightx-production.up.railway.app/predict');
 $ch = curl_init($ml_api_url);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 curl_setopt($ch, CURLOPT_HTTPHEADER, [
