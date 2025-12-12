@@ -1,9 +1,9 @@
 <?php
 // Ambil environment variables dari Railway
-$host = getenv('SUPABASE_DB_HOST');        // Host Supabase
-$port = getenv('SUPABASE_DB_PORT') ?: "5432"; // Port default PostgreSQL
-$db   = getenv('SUPABASE_DB_NAME') ?: "postgres"; // Nama database
-$user = getenv('SUPABASE_DB_USER');        // Username database Supabase
+$host = getenv('db.hfqbgmomirkftodfwphi.supabase.co');        // Host Supabase
+$port = getenv('5432') ?: "5432"; // Port default PostgreSQL
+$db   = getenv('postgres') ?: "postgres"; // Nama database
+$user = getenv('postgres');        // Username database Supabase
 $pass = getenv('SUPABASE_DB_PASSWORD');    // Password database Supabase
 
 // Buat DSN PostgreSQL
@@ -19,3 +19,4 @@ try {
     die("Database connection failed: " . $e->getMessage());
 }
 ?>
+
