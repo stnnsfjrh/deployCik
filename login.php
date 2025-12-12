@@ -3,9 +3,10 @@ session_start();
 require_once 'db.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $username = $_POST['username'];
-    $password = $_POST['password'];
+    $username = $_POST['username'] ?? '';
+    $password = $_POST['password'] ?? '';
 
+    // Ambil user dari Supabase
     $stmt = $pdo->prepare("SELECT * FROM users WHERE username = :username");
     $stmt->execute(['username' => $username]);
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -27,11 +28,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 <body>
 <h2>Login</h2>
+<?php if (!empty($error)) echo "<p>$error</p>"; ?>
 <form method="POST">
-    Username: <input type="text" name="username" required><br>
-    Password: <input type="password" name="password" required><br>
+    <input type="text" name="username" placeholder="Username" required/><br/>
+    <input type="password" name="password" placeholder="Password" required/><br/>
     <button type="submit">Login</button>
 </form>
-<?php if(!empty($error)) echo "<p style='color:red;'>$error</p>"; ?>
 </body>
 </html>
